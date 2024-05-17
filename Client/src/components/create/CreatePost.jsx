@@ -67,7 +67,7 @@ const CreatePost = () => {
         const data = new FormData();
         data.append("name", file.name);
         data.append("file", file);
-        console.log(data);
+        // console.log(data);
 
         // API Call
         const response = await API.uploadFile(data);
@@ -78,12 +78,13 @@ const CreatePost = () => {
     getImage();
     post.categories = location.search?.split("=")[1] || "All";
 
-    console.log(post.categories);
+    // console.log(post.categories);
     post.username = accounts.username;
   }, [file]);
 
+  // Publish button create post api cal and store the post to db
   const savePost = async () => {
-    await API.createPost(post);
+    let response = await API.createPost(post);
     if (response.isSuccess) {
       navigate("/");
     }

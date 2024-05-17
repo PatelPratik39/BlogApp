@@ -1,11 +1,25 @@
 import Post from "../models/Post.js";
 
-export const createPost = async (request, resposne) => {
+// Create Post API
+export const createPost = async (request, response) => {
   try {
-    const post = await new Post(request.body);
-    post.save();
-    return resposne.status(200).json("Post saved Successfully");
+    const post = new Post(request.body);
+    await post.save(); // Corrected to await the save operation
+    console.log(post);
+    return response.status(200).json("Post saved Successfully");
   } catch (error) {
-    return resposne.status(500).json(error);
+    return response.status(500).json(error);
   }
 };
+
+// getAllPosts API
+export const getAllPosts = async (request, response) => {
+  try {
+    let posts = await Post.find({});
+    return response.status(200).json(posts);
+  } catch (error) {
+    return response.status(500).json({ message: error.message }); // Corrected typo in error handling
+  }
+};
+
+
