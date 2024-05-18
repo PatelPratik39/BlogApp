@@ -1,5 +1,6 @@
 import React from "react";
 import { Box, Typography, styled } from "@mui/material";
+import { addElipsis } from "../../../utils/common-utils";
 
 const Container = styled(Box)`
     border: 1px solid #d3cede;
@@ -8,8 +9,8 @@ const Container = styled(Box)`
     display: flex;
     align-items: center;
     flex-direction: column;
-    height: 350px;
-    & > img, & > p {
+    height: 500px;
+     & > p {
         padding: 0 5px 5px 5px;
     }
 `;
@@ -18,17 +19,17 @@ const Image = styled('img')({
     width: '100%',
     objectFit: 'cover',
     borderRadius: '10px 10px 0 0',
-    height: 250
+    height: 350
 });
 
 const Text = styled(Typography)`
-    color: #878787
+    color: #878787;
     font-size: 12px;
 `;
 
 const Heading = styled(Typography)`
     font-size: 18px;
-    font-weight: 600
+    font-weight: 600;
 `;
 
 const Details = styled(Typography)`
@@ -36,14 +37,17 @@ const Details = styled(Typography)`
     word-break: break-word;
 `;
 const Post = ({ post }) => {
+  const url = post.picture
+    ? post.picture
+    : "../../../../src/assets/noImageFound.png";
   return (
     <>
       <Container>
-        <Image src={post.picture} alt="blog" />
+        <Image src={url} alt="blog" />
         <Text>{post.categories}</Text>
-        <Heading>{post.title}</Heading>
-        <Text>{post.username}</Text>
-        <Typography>{post.description}</Typography>
+        <Heading>{addElipsis(post.title, 25)}</Heading>
+        <Text>Author : {post.username}</Text>
+        <Details>{addElipsis(post.description, 100)}</Details>
       </Container>
     </>
   );

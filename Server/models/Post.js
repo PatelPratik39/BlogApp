@@ -7,6 +7,10 @@ const PostSchema = mongoose.Schema(
       required: true,
       unique: true
     },
+    username: {
+      type: String,
+      required: true,
+    },
     description: {
       type: String,
       required: true
@@ -15,16 +19,12 @@ const PostSchema = mongoose.Schema(
       type: String,
       required: false
     },
-    username: {
-      type: String,
-      required: false
-    },
     categories: {
       type: Array,
       required: false
     },
     createdDate: {
-      type:Date,
+      type: Date,
       required: true
     }
   },

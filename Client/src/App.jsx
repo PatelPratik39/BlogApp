@@ -30,7 +30,6 @@ function App() {
     <>
       <DataProvider>
         <BrowserRouter>
-          {/* <Header /> */}
           <div style={{ marginTop: "60px" }}>
             {/* <h1 style={{ textAlign: "center" }}> Hello Bloggers !!👋🏻</h1> */}
             <Routes>

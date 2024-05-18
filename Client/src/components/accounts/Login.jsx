@@ -110,37 +110,6 @@ const Login = ({ setIsAuthenticated }) => {
     const { name, value } = e.target;
     setLogin({ ...login, [name]: value });
   };
-
-  // const loginUser = async () => {
-  //   try {
-  //     const response = await API.userLogin(login);
-  //     console.log("Login Resposne : " ,response);
-  //     if (response && response.isSuccess) {
-  //       setError("");
-  //       console.log("Access Token:", response.data.accessToken);
-  //       console.log("Refresh Token:", response.data.refreshToken);
-  //       sessionStorage.setItem(
-  //         "accessToken",
-  //         `Bearer ${response.data.accessToken}`
-  //       );
-  //       sessionStorage.setItem(
-  //         "refreshToken",
-  //         `Bearer ${response.data.refreshToken}`
-  //       );
-  //       setAccounts({
-  //         username: response.data.username,
-  //         name: response.data.name
-  //       });
-  //       setIsAuthenticated(true);
-  //       setLogin(loginInitialValues);
-  //       navigate("/");
-  //     } else {
-  //       setError("Something went wrong!!");
-  //     }
-  //   } catch (error) {
-  //     setError("Something went wrong!! Please try again ");
-  //   }
-  // };
   const loginUser = async () => {
     try {
         const response = await API.userLogin(login);
@@ -168,37 +137,6 @@ const Login = ({ setIsAuthenticated }) => {
         setError("Something went wrong. Please try again.");
     }
 };
-
-
-
-  // const loginUser = async () => {
-  //   try {
-  //     const response = await API.userLogin(login);
-  //     if (response && response.isSuccess) {
-  //       setError("");
-  //       sessionStorage.setItem(
-  //         "accessToken",
-  //         `Bearer ${response.data.accessToken}`
-  //       );
-  //       sessionStorage.setItem(
-  //         "refreshToken",
-  //         `Bearer ${response.data.refreshToken}`
-  //       );
-  //       setAccounts({
-  //         username: response.data.username,
-  //         name: response.data.name
-  //       });
-  //       setIsAuthenticated(true);
-  //       setLogin(loginInitialValues);
-  //       // Navigate to Home screen if authenticated
-  //       navigate("/");
-  //     } else {
-  //       setError("Something went wrong!!");
-  //     }
-  //   } catch (error) {
-  //     setError("Something went wrong!! Please try again ");
-  //   }
-  // };
 
 
 

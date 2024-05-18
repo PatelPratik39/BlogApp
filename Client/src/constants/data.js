@@ -7,5 +7,10 @@ export const categories = [
   { id: 5, type: "Fashion" },
   { id: 6, type: "Travel" },
   { id: 7, type: "Art" },
-  { id: 8, type: "Hobby" }
+  { id: 8, type: "Hobby" },
+  { id: 9, type: "Food" },
+  { id: 10, type: "Nature" },
+  { id: 11, type: "Car" },
+  { id: 12, type: "Culture" },
+  { id: 13, type: "Medicine" }
 ];

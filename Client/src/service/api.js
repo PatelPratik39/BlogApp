@@ -1,7 +1,7 @@
 import axios from "axios";
 import { API_NOTIFICATION_MESSAGES, SERVICE_URLS } from "../constants/config";
 const API_URL = "http://localhost:3001";
-import { getAccessToken } from "../utils/common-utils";
+import { getAccessToken, getType } from "../utils/common-utils";
 
 const axiosInstance = axios.create({
   baseURL: API_URL,
@@ -19,6 +19,11 @@ const axiosInstance = axios.create({
 axiosInstance.interceptors.request.use(
   (config) => {
     // Intercept request logic here
+    if (config.TYPE.params) {
+      config.params = config.TYPE.params;
+    } else if (config.TYPE.query) {
+      config.url = config.url + "/" + config.TYPE.query;
+    }
     console.log("Outgoing request intercepted:", config);
     // Update headers in the config object
     return config;
@@ -43,22 +48,9 @@ axiosInstance.interceptors.response.use(
     return Promise.reject(processError(error));
   }
 );
-//If success -> return{ isSuccess : true, data: Object}
-// If fail ->  return{ isFailure: true, status: string, message: string, code: int}
-// const processResponse = (response) => {
-//   if (response?.status === 200) {
-//     return { isSuccess: true, data: response.data };
-//   } else {
-//     return {
-//       isFailure: true,
-//       status: response?.status,
-//       message: response?.data?.message, // Adjust to get the correct message
-//       // code: response?.code
-//       code: response?.status
-//     };
-//   }
-// };
 
+// If success -> return{ isSuccess : true, data: Object}
+// If fail ->  return{ isFailure: true, status: string, message: string, code: int}
 const processResponse = (response) => {
   if (response?.status === 200) {
     return { isSuccess: true, data: response.data };
@@ -72,7 +64,7 @@ const processResponse = (response) => {
   }
 };
 
-//If success -> return{ isSuccess : true, data: Object}
+// If success -> return{ isSuccess : true, data: Object}
 // If fail ->  return{ isFailure: true, status: string, message: string, code: int}
 const processError = (error) => {
   if (error.response) {
@@ -114,6 +106,7 @@ for (const [key, value] of Object.entries(SERVICE_URLS)) {
       headers: {
         authorization: getAccessToken()
       },
+      TYPE: getType(value, body),
       onUploadProgress: function (progressEvent) {
         if (showUploadProgress) {
           let percentageCompleted = Math.round(
@@ -134,30 +127,3 @@ for (const [key, value] of Object.entries(SERVICE_URLS)) {
   };
 }
 export { API };
-
-// for (const [key, value] of Object.entries(SERVICE_URLS)) {
-//   API[key] = (body, showUploadProgress, showDownloadProgress) => {
-//     axiosInstance({
-//       method: value.method,
-//       url: value.url,
-//       data: body,
-//       responseType: value.responseType,
-//       onUploadProgress: function (progressEvent) {
-//         if (showUploadProgress) {
-//           let percentageCompleted = Math.round(
-//             (progressEvent.loaded * 100) / progressEvent.total
-//           );
-//           showUploadProgress(percentageCompleted);
-//         }
-//       },
-//       onDownloadProgress: function (progressEvent) {
-//         if (showDownloadProgress) {
-//           let percentageCompleted = Math.round(
-//             (progressEvent.loaded * 100) / progressEvent.total
-//           );
-//           showDownloadProgress(percentageCompleted);
-//         }
-//       }
-//     });
-//   };
-// }

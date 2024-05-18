@@ -2,21 +2,24 @@ import React, { useEffect, useState } from "react";
 import { API } from "../../../service/api.js";
 import { Box, Grid } from "@mui/material";
 import Post from "./Post.jsx";
-import { Link } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
 
 const Posts = () => {
   const [posts, setPosts] = useState([]);
+  // if i want to filter the post based on categories.i need to filter the categories using searchParams
+  const [searchParams] = useSearchParams();
+  const category = searchParams.get("category");
 
   useEffect(() => {
     const fetchPostData = async () => {
-      const response = await API.getAllPosts();
-      console.log(response);
+      const response = await API.getAllPosts({ category: category || "" });
+      // console.log(response);
       if (response.isSuccess) {
         setPosts(response.data);
       }
     };
     fetchPostData();
-  }, []);
+  }, [category]);
 
   return (
     <>
@@ -32,8 +35,8 @@ const Posts = () => {
           </Grid>
         ))
       ) : (
-        <Box style={{ color: "878787", margin: "30px 80px", fontSize: 18 }}>
-          No data is available for selected category
+        <Box style={{ color: "#878787", margin: "30px 80px", fontSize: 18 }}>
+          No data is available for selected Category!! 🤷🏻‍♂️
         </Box>
       )}
     </>
