@@ -2,6 +2,8 @@ import Login from "./components/accounts/Login";
 import DataProvider from "./context/DataProvider";
 import Home from "./components/home/Home";
 import Header from "./components/header/Header";
+import PostDetails from "./components/PostDetails/PostDetails";
+
 import {
   BrowserRouter,
   Outlet,
@@ -49,6 +51,12 @@ function App() {
                 element={<PrivateRoute isAuthenticated={isAuthenticated} />}
               >
                 <Route path="/create" element={<CreatePost />} />
+              </Route>
+              <Route
+                path="/details/:id"
+                element={<PrivateRoute isAuthenticated={isAuthenticated} />}
+              >
+                <Route path="/details/:id" element={<PostDetails />} />
               </Route>
             </Routes>
           </div>
