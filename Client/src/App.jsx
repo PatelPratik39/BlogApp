@@ -13,6 +13,7 @@ import {
 } from "react-router-dom";
 import { useState } from "react";
 import CreatePost from "./components/create/CreatePost";
+import UpdatePost from "./components/create/UpdatePost";
 
 const PrivateRoute = ({ isAuthenticated, ...props }) => {
   // if user is authenticate then can move further otherwise send back to login page
@@ -51,6 +52,12 @@ function App() {
                 element={<PrivateRoute isAuthenticated={isAuthenticated} />}
               >
                 <Route path="/create" element={<CreatePost />} />
+              </Route>
+              <Route
+                path="/update/:id"
+                element={<PrivateRoute isAuthenticated={isAuthenticated} />}
+              >
+                <Route path="/update/:id" element={<UpdatePost />} />
               </Route>
               <Route
                 path="/details/:id"

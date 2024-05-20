@@ -43,3 +43,40 @@ export const getPost = async (request, response) => {
     return response.status(500).json({ message: error.message });
   }
 };
+
+// Update Post API
+/*
+first I need to get post from database,
+second i need to update the post
+third send the post back to database
+
+*/
+export const updatePost = async (request, response) => {
+  try {
+    const post = await Post.findById(request.params.id); //first I need to get post from database,
+    if (!post) {
+      return response.status(404).json({ message: "Post not found" });
+    }
+    await Post.findByIdAndUpdate(request.params.id, { $set: request.body }); // $set, and $addtoSet
+    return response.status(200).json({ message: "Post UPDATED Successfully" });
+  } catch (error) {
+    return response.status(500).json({ message: error.message });
+  }
+};
+
+
+// Delete POST API
+
+export const deletePost = async(request, response) => {
+  try{
+    const postId = request.params.id;
+    const post = await Post.findById(postId);
+    if (!post) {
+      return response.status(404).json({ message: "Post not found" });
+    }
+    await Post.findByIdAndDelete(postId);
+    return response.status(200).json({ message: "Post DELETED Successfully" });
+  }catch(error){
+    return response.status(500).json({ message: error.message });
+  }
+}

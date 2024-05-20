@@ -110,22 +110,28 @@ const Login = ({ setIsAuthenticated }) => {
     const { name, value } = e.target;
     setLogin({ ...login, [name]: value });
   };
+
+  // Login Functionality
+
   const loginUser = async () => {
     try {
         const response = await API.userLogin(login);
         console.log("Login Response:", response);
         if (response && response.isSuccess) {
-            const accessToken = response.data.data.accessToken;
+            // const accessToken = response.data.data.accessToken;
+            const { accessToken, username, name } = response.data.data;
             console.log("Access Token:", accessToken);
             if (!accessToken) {
                 console.error("Access Token is missing in the response.");
                 return;
             }
             sessionStorage.setItem("accessToken", `Bearer ${accessToken}`);
-            setAccounts({
-                username: response.data.username,
-                name: response.data.name
-            });
+            setAccounts({username, name})
+            // setAccounts({
+            //     username: response.data.username,
+            //     name: response.data.name
+            // });
+            console.log(response.data.data.username);
             setIsAuthenticated(true);
             setLogin(loginInitialValues);
             navigate("/");
@@ -138,6 +144,30 @@ const Login = ({ setIsAuthenticated }) => {
     }
 };
 
+// const loginUser = async () => {
+//   try {
+//     const response = await API.userLogin(login);
+//     console.log("Login Response:", response);
+//     if (response && response.isSuccess) {
+//       const { accessToken, username, name } = response.data.data;
+//       console.log("Access Token:", accessToken);
+//       if (!accessToken) {
+//         console.error("Access Token is missing in the response.");
+//         return;
+//       }
+//       sessionStorage.setItem("accessToken", `Bearer ${accessToken}`);
+//       setAccounts({ username, name });
+//       setIsAuthenticated(true);
+//       setLogin(loginInitialValues);
+//       navigate("/");
+//     } else {
+//       setError("Login failed. Please try again.");
+//     }
+//   } catch (error) {
+//     console.error("Login error:", error);
+//     setError("Something went wrong. Please try again.");
+//   }
+// };
 
 
   return (
@@ -171,10 +201,7 @@ const Login = ({ setIsAuthenticated }) => {
                 value={login.password}
               />
               {error && <Error>{error}</Error>}
-              <LoginButton
-                variant="contained"
-                onClick={() => loginUser()}
-              >
+              <LoginButton variant="contained" onClick={() => loginUser()}>
                 Login
               </LoginButton>
               <Text style={{ textAlign: "center" }}>
@@ -211,6 +238,7 @@ const Login = ({ setIsAuthenticated }) => {
               <TextField
                 label="Password"
                 name="password"
+                type="password"
                 variant="standard"
                 onChange={(e) => onInputChange(e)}
                 value={signup.password}

@@ -19,8 +19,10 @@ const Container = styled(Box)(({ theme }) => ({
 const Image = styled("img")({
   width: "100%",
   height: "50vh",
-  objectFit: "cover"
+  objectFit: "contain"
+  // objectFit: "cover"
 });
+
 
 const EditIcon = styled(Edit)`
   margin: 5px;
@@ -61,6 +63,8 @@ const PostDetails = () => {
   const [post, setPost] = useState({});
   const { accounts } = useContext(DataContext);
   const { id } = useParams();
+  const navigate = useNavigate();
+
   const url = post.picture ? post.picture : "../../assets/no-pictures.png";
 
   useEffect(() => {
@@ -73,14 +77,36 @@ const PostDetails = () => {
     fetchData();
   }, []);
 
+// Debugging urpose, i was not getting accounts details
+
+  // useEffect(() => {
+  //   console.log("Accounts:", accounts);
+  //   console.log("Post:", post);
+  //   if (accounts && post) {
+  //     console.log("Accounts Username:", accounts.username);
+  //     console.log("Post Username:", post.username);
+  //     console.log("Comparison Result:", accounts?.username === post?.username);
+  //   }
+  // }, [accounts, post]);
+
+  const deleteBlog = async () => {
+    let response = await API.deletePost(post._id);
+    if (response.isSuccess) {
+      navigate("/");
+    }
+  };
+
   return (
     <Container>
       <Image src={post.picture || url} alt="post" />
+  
       <Box style={{ float: "right" }}>
         {accounts.username === post.username && (
           <>
-            <EditIcon color="primary" />
-            <DeleteIcon color="error" />
+            <Link to={`/update/${post._id}`}>
+              <EditIcon color="primary" />
+            </Link>
+            <DeleteIcon color="error" onClick={() => deleteBlog()} />
           </>
         )}
       </Box>
