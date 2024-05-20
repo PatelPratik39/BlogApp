@@ -1,18 +1,16 @@
+import React from "react";
 import { useState, useEffect, useContext } from "react";
-
 import { Box, Typography, styled } from "@mui/material";
 import { Delete, Edit } from "@mui/icons-material";
 import { Link, useNavigate, useParams } from "react-router-dom";
-
 import { API } from "../../service/api";
-
 import { DataContext } from "../../context/DataProvider";
 
 // components
 // import Comments from "./comments/Comments";
 
 const Container = styled(Box)(({ theme }) => ({
-  margin: "50px 100px",
+  margin: "75px 10px",
   [theme.breakpoints.down("md")]: {
     margin: 0
   }
@@ -43,6 +41,7 @@ const Heading = styled(Typography)`
   font-weight: 600;
   text-align: center;
   margin: 50px 0 10px 0;
+  word-break: break-word;
 `;
 
 const Author = styled(Box)(({ theme }) => ({
@@ -54,11 +53,13 @@ const Author = styled(Box)(({ theme }) => ({
   }
 }));
 
+const Description = styled(Typography)`
+  word-break: break-word;
+`;
+
 const PostDetails = () => {
   const [post, setPost] = useState({});
   const { accounts } = useContext(DataContext);
-
-  const navigate = useNavigate();
   const { id } = useParams();
   const url = post.picture ? post.picture : "../../assets/no-pictures.png";
 
@@ -72,44 +73,44 @@ const PostDetails = () => {
     fetchData();
   }, []);
 
-//   const deleteBlog = async () => {
-//     await API.deletePost(post._id);
-//     navigate("/");
-//   };
-
   return (
     <Container>
       <Image src={post.picture || url} alt="post" />
       <Box style={{ float: "right" }}>
         {accounts.username === post.username && (
           <>
-            <Link to={`/update/${post._id}`}>
-              <EditIcon color="primary" />
-            </Link>
-            <DeleteIcon onClick={() => deleteBlog()} color="error" />
+            <EditIcon color="primary" />
+            <DeleteIcon color="error" />
           </>
         )}
       </Box>
       <Heading>{post.title}</Heading>
 
       <Author>
-        <Link
-          to={`/?username=${post.username}`}
-          style={{ textDecoration: "none", color: "inherit" }}
-        >
-          <Typography>
-            Author: <span style={{ fontWeight: 600 }}>{post.username}</span>
-          </Typography>
-        </Link>
+        <Typography>
+          Author :{" "}
+          <Box component="span" style={{ fontWeight: 600 }}>
+            {post.username}
+          </Box>
+        </Typography>
         <Typography style={{ marginLeft: "auto" }}>
           {new Date(post.createdDate).toDateString()}
         </Typography>
       </Author>
-
-      <Typography>{post.description}</Typography>
-      {/* <Comments post={post} /> */}
+      <Description>{post.description}</Description>
     </Container>
   );
 };
 
 export default PostDetails;
+
+{
+  /* {accounts.username === post.username && (
+          <>
+            <Link to={`/update/${post._id}`}>
+              <EditIcon color="primary" />
+            </Link>
+            <DeleteIcon onClick={() => deleteBlog()} color="error" />
+          </>
+        )} */
+}
