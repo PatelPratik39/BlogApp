@@ -6,10 +6,7 @@
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js",
-    "client-install": "cd Client && npm install",
-    "client-build": "cd Client && npm run build",
-    "heroku-postbuild": "npm run client-install && client-build"
+    "start": "node server.js"
   },
   "keywords": [],
   "author": "Pratik Patel",
