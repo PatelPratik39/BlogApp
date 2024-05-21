@@ -10,7 +10,6 @@
     "start-server": "node server.js",
     "start": "npm run build-client && npm run start-server"
   },
-  
   "keywords": [],
   "author": "Pratik Patel",
   "license": "ISC",
@@ -21,7 +20,7 @@
     "cors": "^2.8.5",
     "dotenv": "^16.4.5",
     "express": "^4.19.2",
-    "GridFS": "^0.3.0",
+    "gridfs": "^1.0.0",
     "gridfs-stream": "^1.1.1",
     "jsonwebtoken": "^9.0.2",
     "mongodb": "^5.9.1",
