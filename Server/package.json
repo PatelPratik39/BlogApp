@@ -6,7 +6,7 @@
   "type": "module",
   "scripts": {
     "build": "cd Client && npm install && npm run build",
-    "start": "npm start"
+    "start": "node server.js"
   },
   
   "keywords": [],
