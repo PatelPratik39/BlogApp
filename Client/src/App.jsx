@@ -3,7 +3,6 @@ import DataProvider from "./context/DataProvider";
 import Home from "./components/home/Home";
 import Header from "./components/header/Header";
 import PostDetails from "./components/PostDetails/PostDetails";
-
 import {
   BrowserRouter,
   Outlet,
@@ -14,6 +13,8 @@ import {
 import { useState } from "react";
 import CreatePost from "./components/create/CreatePost";
 import UpdatePost from "./components/create/UpdatePost";
+import About from "./components/about/About";
+import Contact from "./components/contacts/contacts";
 
 const PrivateRoute = ({ isAuthenticated, ...props }) => {
   // if user is authenticate then can move further otherwise send back to login page
@@ -64,6 +65,18 @@ function App() {
                 element={<PrivateRoute isAuthenticated={isAuthenticated} />}
               >
                 <Route path="/details/:id" element={<PostDetails />} />
+              </Route>
+              <Route
+                path="/about"
+                element={<PrivateRoute isAuthenticated={isAuthenticated} />}
+              >
+                <Route path="/about" element={<About />} />
+              </Route>
+              <Route
+                path="/contact"
+                element={<PrivateRoute isAuthenticated={isAuthenticated} />}
+              >
+                <Route path="/contact" element={<Contact />} />
               </Route>
             </Routes>
           </div>
