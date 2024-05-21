@@ -7,8 +7,10 @@
   "scripts": {
     "install-client": "cd Client && npm install",
     "build-client": "cd Client && npm run build",
+    "rebuild-bcrypt": "npm rebuild bcrypt",
     "start-server": "node server.js",
-    "start": "npm run build-server && npm run build-client && npm run start-server"
+    "build": "npm run install-client && npm run rebuild-bcrypt && npm run build-client",
+    "start": "npm run build && npm run start-server"
   },
   "keywords": [],
   "author": "Pratik Patel",
