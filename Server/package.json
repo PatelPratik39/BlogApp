@@ -5,9 +5,10 @@
   "main": "server.js",
   "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "build": "cd Client && npm install && npm run build",
+    "start": "cd Server && npm start"
   },
+  
   "keywords": [],
   "author": "Pratik Patel",
   "license": "ISC",
@@ -30,8 +31,6 @@
   },
   "devDependencies": {
     "@vitejs/plugin-react": "^4.2.1",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1",
     "vite": "^5.2.11"
   }
 }
