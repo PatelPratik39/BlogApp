@@ -29,17 +29,17 @@ app.use((err, req, res, next) => {
 // Local PORT & Heroku PORT
 const PORT = process.env.PORT || 3000;
 
-// // MongoDB URL
-// const URL =
-//   process.env.MONGO_DB ||
-//   `mongodb+srv://${USERNAME}:${PASSWORD}@blogzzmern.ts2fnk7.mongodb.net/`;
+// MongoDB URL
+const URL =
+  process.env.MONGO_DB ||
+  `mongodb+srv://${USERNAME}:${PASSWORD}@blogzzmern.ts2fnk7.mongodb.net/`;
 
 app.listen(PORT, () => {
   console.log(chalk.magenta(`Server is rinning on PORT : ${PORT}`));
 });
 
-// const USERNAME = process.env.DB_USERNAME;
-// const PASSWORD = process.env.DB_PASSWORD;
+const USERNAME = process.env.DB_USERNAME;
+const PASSWORD = process.env.DB_PASSWORD;
 
 // Connection(USERNAME, PASSWORD);
-// Connection(URL);
+Connection(URL);
