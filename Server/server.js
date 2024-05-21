@@ -15,10 +15,10 @@ app.use(bodyparser.urlencoded({ extended: true }));
 app.use("/", Router);
 app.options("*", cors());
 
-// HEROKU deployment setup
-if (process.env.NODE_ENV === "production") {
-  app.use(express.static("Client/build"));
-}
+// // HEROKU deployment setup
+// if (process.env.NODE_ENV === "production") {
+//   app.use(express.static("Client/build"));
+// }
 
 // Error handling middleware
 app.use((err, req, res, next) => {
@@ -29,17 +29,17 @@ app.use((err, req, res, next) => {
 // Local PORT & Heroku PORT
 const PORT = process.env.PORT || 3000;
 
-// MongoDB URL
-const URL =
-  process.env.MONGO_DB ||
-  `mongodb+srv://${USERNAME}:${PASSWORD}@blogzzmern.ts2fnk7.mongodb.net/`;
+// // MongoDB URL
+// const URL =
+//   process.env.MONGO_DB ||
+//   `mongodb+srv://${USERNAME}:${PASSWORD}@blogzzmern.ts2fnk7.mongodb.net/`;
 
 app.listen(PORT, () => {
   console.log(chalk.magenta(`Server is rinning on PORT : ${PORT}`));
 });
 
-const USERNAME = process.env.DB_USERNAME;
-const PASSWORD = process.env.DB_PASSWORD;
+// const USERNAME = process.env.DB_USERNAME;
+// const PASSWORD = process.env.DB_PASSWORD;
 
 // Connection(USERNAME, PASSWORD);
-Connection(URL);
+// Connection(URL);
