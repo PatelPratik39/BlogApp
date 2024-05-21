@@ -10,6 +10,11 @@ import {
 } from "../controller/postController.js";
 import { authenticateToken } from "../controller/jwt-controller.js";
 import upload from "../utils/upload.js";
+import {
+  newComment,
+  getComments,
+  deleteComment
+} from "../controller/comment-controller.js";
 
 const router = express.Router();
 
@@ -33,8 +38,17 @@ router.get("/post/:id", authenticateToken, getPost);
 // PUT API
 router.put("/update/:id", authenticateToken, updatePost);
 
-// DELETE API
-router.delete('/delete/:id', authenticateToken, deletePost);
+// DELETE API route
+router.delete("/delete/:id", authenticateToken, deletePost);
 
+// POST New Comments API route
+router.post("/comment/new", authenticateToken, newComment);
+
+// GET ALL Comments API route
+// router.get("/comments", authenticateToken, getComments);
+router.get("/comments/:id", authenticateToken, getComments);
+
+// DELETE COMMENT ROUTE
+router.delete("/comment/delete/:id", authenticateToken, deleteComment);
 
 export default router;

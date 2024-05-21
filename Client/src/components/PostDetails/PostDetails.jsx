@@ -7,7 +7,7 @@ import { API } from "../../service/api";
 import { DataContext } from "../../context/DataProvider";
 
 // components
-// import Comments from "./comments/Comments";
+import Comments from "./comments/Comments";
 
 const Container = styled(Box)(({ theme }) => ({
   margin: "75px 10px",
@@ -124,19 +124,11 @@ const PostDetails = () => {
         </Typography>
       </Author>
       <Description>{post.description}</Description>
+      <Comments post={post} />
     </Container>
   );
 };
 
 export default PostDetails;
 
-{
-  /* {accounts.username === post.username && (
-          <>
-            <Link to={`/update/${post._id}`}>
-              <EditIcon color="primary" />
-            </Link>
-            <DeleteIcon onClick={() => deleteBlog()} color="error" />
-          </>
-        )} */
-}
+

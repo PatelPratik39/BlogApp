@@ -13,10 +13,10 @@ import { Box, Typography, styled } from "@mui/material";
 //   background-size: cover;
 // `;
 const Image = styled(Box)`
-  background: url(https://images.pexels.com/photos/268533/pexels-photo-268533.jpeg?auto=compress&cs=tinysrgb&w=800)
+  background: url(https://images.pexels.com/photos/268533/pexels-photo-268533.jpeg?auto=compress&cs=tinysrgb&w=900)
     center/cover no-repeat #000;
   width: 100%; /* Set width to fill container */
-  height: 45vh;
+  height: 40vh;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -25,7 +25,7 @@ const Image = styled(Box)`
 const Heading = styled(Typography)`
   font-size: 70px;
   color: #ffffff;
-  line-height: 1
+  line-height: 2
 `;
 
 const SubHeading = styled(Typography)`
@@ -38,7 +38,7 @@ const Banner = () => {
     <Image>
       <Heading>BLOGZZ</Heading>
       <SubHeading>
-        Travel More, Worry Less: Making Memories That Last a Lifetime
+          Travel More, Worry Less: Making Memories That Last a Lifetime  
       </SubHeading>
     </Image>
   );
