@@ -1,15 +1,12 @@
 import axios from "axios";
 import { API_NOTIFICATION_MESSAGES, SERVICE_URLS } from "../constants/config";
-const API_URL = "http://localhost:3001";
+// const API_URL = "http://localhost:3001";  //Local server and port for locally run
+const API_URL = ''    //for Heroku Production deployment, i need to keep it empty
 import { getAccessToken, getType } from "../utils/common-utils";
 
 const axiosInstance = axios.create({
   baseURL: API_URL,
   timeout: 10000,
-  // headers: {
-  //   "Accept": "application/json, multipart/form-data",
-  //   "Content-Type": "application/json"
-  // }
   headers: {
     "Content-Type": "application/json"
   }

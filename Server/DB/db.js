@@ -2,7 +2,7 @@ import mongoose from 'mongoose';
 import chalk from "chalk";
 
 const Connection = async (username, password) => {
-  const URL = `mongodb+srv://${username}:${password}@blogzzmern.ts2fnk7.mongodb.net/`;
+  // const URL = `mongodb+srv://${username}:${password}@blogzzmern.ts2fnk7.mongodb.net/`;
   // const URL = `mongodb+srv://${username}:${password}@blogsz.ts2fnk7.mongodb.net/?retryWrites=true&w=majority&appName=blogsz`;
   // const URL = `mongodb+srv://${username}:${password}@blogzzmern.ts2fnk7.mongodb.net/?retryWrites=true&w=majority`;
   try {

@@ -2,11 +2,14 @@
   "name": "server",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "server.js",
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node index.js"
+    "start": "node server.js",
+    "client-install": "cd Client && npm install",
+    "client-build":"cd Client && npm run build",
+    "heroku-postbuild":"npm run client-install && client-build"
   },
   "keywords": [],
   "author": "Pratik Patel",

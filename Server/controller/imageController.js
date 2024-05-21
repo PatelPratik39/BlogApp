@@ -1,20 +1,20 @@
 import grid from "gridfs-stream";
 import mongoose from "mongoose";
 
-const url = "http://localhost:3001";
+// const url = "http://localhost:3001";     //locally run, i need to provide the url but production environemnt, we dont need it
+const url = ""; // I have to keep this url empty for deploying to production environemnt
 
 // DB Connection
 
 let gfs, gridfsBucket;
 const conn = mongoose.connection;
-conn.once('open', () => {
-    gridfsBucket = new mongoose.mongo.GridFSBucket(conn.db, {
-        bucketName: 'fs'
-    });
-    gfs = grid(conn.db, mongoose.mongo);
-    gfs.collection('fs');
+conn.once("open", () => {
+  gridfsBucket = new mongoose.mongo.GridFSBucket(conn.db, {
+    bucketName: "fs"
+  });
+  gfs = grid(conn.db, mongoose.mongo);
+  gfs.collection("fs");
 });
-
 
 // first upload the file to database
 
@@ -43,4 +43,3 @@ export const getImage = async (request, response) => {
     response.status(500).json({ msg: error.message });
   }
 };
-
