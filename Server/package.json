@@ -8,8 +8,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js",
     "client-install": "cd Client && npm install",
-    "client-build":"cd Client && npm run build",
-    "heroku-postbuild":"npm run client-install && client-build"
+    "client-build": "cd Client && npm run build",
+    "heroku-postbuild": "npm run client-install && client-build"
   },
   "keywords": [],
   "author": "Pratik Patel",
@@ -30,5 +30,11 @@
     "multer-gridfs-storage": "^5.0.2",
     "nodemon": "^3.1.0",
     "npm": "^10.7.0"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^4.2.1",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "vite": "^5.2.11"
   }
 }
