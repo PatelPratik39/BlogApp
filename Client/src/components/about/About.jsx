@@ -2,7 +2,7 @@ import { Box, styled, Typography, Link } from "@mui/material";
 import { GitHub, Instagram, Email } from "@mui/icons-material";
 
 const Banner = styled(Box)`
-  background-image: url(https://www.wallpapertip.com/wmimgs/23-236943_us-wallpaper-for-website.jpg);
+  background-image: url(https://images.pexels.com/photos/534164/pexels-photo-534164.jpeg?auto=compress&cs=tinysrgb&w=800);
   width: 100%;
   height: 50vh;
   background-position: left 0px bottom 0px;
@@ -10,6 +10,10 @@ const Banner = styled(Box)`
 `;
 
 const Wrapper = styled(Box)`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   padding: 20px;
   & > h3,
   & > h5 {
@@ -19,6 +23,10 @@ const Wrapper = styled(Box)`
 
 const Text = styled(Typography)`
   color: #878787;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 `;
 
 const About = () => {
@@ -26,15 +34,21 @@ const About = () => {
     <Box>
       <Banner />
       <Wrapper>
-        <Typography variant="h3">Code for Interview</Typography>
+        <Typography variant="h3">Blogzzz App by Pratik</Typography>
         <Text variant="h5">
-          I'm a Software Engineer based in India. I've built websites, desktop
-          applications and corporate software.
+          I'm a Software Engineer. Experienced and enthusiastic software
+          engineer with over 3 years of hands-on experience, possessing a proven
+          track record of delivering high-quality solutions. Passionate about
+          leveraging technology to solve complex problems and drive innovation,
+          I am skilled in ReactJs, Express, NodeJs, Java, Springboot, MongoDB,
+          and AWS. Currently seeking new opportunities to contribute my
+          expertise and creativity to exciting projects.
           <br />
-          If you are interested, you can view some of my favorite projects here
+          <br />
+          <Text variant="h5">Here is my Project works : &nbsp;</Text>
           <Box component="span" style={{ marginLeft: 5 }}>
             <Link
-              href="https://github.com/kunaltyagi9"
+              href="https://github.com/PatelPratik39"
               color="inherit"
               target="_blank"
             >
@@ -42,27 +56,16 @@ const About = () => {
             </Link>
           </Box>
         </Text>
-        <Text variant="h5">
-          Need something built or simply want to have chat? Reach out to me on
-          <Box component="span" style={{ marginLeft: 5 }}>
-            <Link
-              href="https://www.instagram.com/codeforinterview/"
-              color="inherit"
-              target="_blank"
-            >
-              <Instagram />
-            </Link>
-          </Box>
-          or send me an Email
+        {/* <Text variant="h5">
+          send me an Email
           <Link
-            href="mailto:codeforinterview@gmail.com?Subject=This is a subject"
+            href="mailto:ptl.pratik717@gmail.com?Subject=This is a subject"
             target="_blank"
             color="inherit"
           >
             <Email />
           </Link>
-          .
-        </Text>
+        </Text> */}
       </Wrapper>
     </Box>
   );
