@@ -5,6 +5,6 @@
 <img src="Blogzz_HomePage.png" alt="Blogzz Page"/>
 <img src="SearchBycategory.png" alt="categories Post Page"/>
 <img src="InitialPostPublish.png" alt="Initial Post Page"/>
-<img src="PostWithDetails.png" alt="Post publish Page"/>
+<img src="PostwithDetails.png" alt="Post publish Page"/>
 <img src="updatePost.png" alt="Update/delete post Page"/>
 <img src="deleteComment.png" alt="Update/delete review Page"/>
