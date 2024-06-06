@@ -1,6 +1,6 @@
 <h1> This is Full stack Blogzz App using MERN Stack </h1>
 
-<img src="" alt="Login Page"/>
+<img src="Loginpage.png" alt="Login Page"/>
 <img src="" alt="Register Page"/>
 <img src="" alt="Blogzz Page"/>
 <img src="" alt="Initial Post Page"/>
